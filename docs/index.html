@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EFFAK - Emergency Financial First Aid Kit. Secure document management for emergency situations.">
+    <title>EFFAK - Emergency Financial First Aid Kit</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🚨 EFFAK</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="#api">API</a></li>
+                <li><a href="https://github.com/aei-wsi/effak" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Emergency Financial First Aid Kit</h1>
+                <p class="hero-subtitle">Secure document management and emergency sharing for critical situations</p>
+                <div class="hero-buttons">
+                    <a href="getting-started.html" class="btn btn-primary">Get Started</a>
+                    <a href="api.html" class="btn btn-secondary">API Docs</a>
+                    <a href="https://github.com/aei-wsi/effak" class="btn btn-outline" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Secure Authentication</h3>
+                    <p>JWT-based authentication with email verification, password reset, and refresh tokens</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Multi-User Households</h3>
+                    <p>Create and manage multiple households with role-based access control</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3>Document Management</h3>
+                    <p>Organize documents by category and family member with metadata tracking</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚨</div>
+                    <h3>Emergency Access</h3>
+                    <p>Grant time-limited access to trusted contacts with granular permissions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3>Notifications</h3>
+                    <p>Email and SMS notifications for important events and emergency access</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Audit Logging</h3>
+                    <p>Complete audit trail of all document access and system activities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech-stack" class="tech-stack">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>Node.js & Express.js</li>
+                        <li>PostgreSQL Database</li>
+                        <li>JWT Authentication</li>
+                        <li>bcrypt Password Hashing</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h4>Security</h4>
+                    <ul>
+                        <li>Helmet.js Security Headers</li>
+                        <li>CORS Protection</li>
+                        <li>Rate Limiting</li>
+                        <li>Input Validation</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h4>Communication</h4>
+                    <ul>
+                        <li>Nodemailer (Email)</li>
+                        <li>Twilio (SMS)</li>
+                        <li>Winston Logging</li>
+                        <li>Real-time Notifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="docs" class="documentation">
+        <div class="container">
+            <h2 class="section-title">Documentation</h2>
+            <div class="docs-grid">
+                <a href="getting-started.html" class="doc-card">
+                    <h3>🚀 Getting Started</h3>
+                    <p>Quick setup guide and installation instructions</p>
+                </a>
+                <a href="api.html" class="doc-card">
+                    <h3>📡 API Reference</h3>
+                    <p>Complete API documentation with examples</p>
+                </a>
+                <a href="https://github.com/aei-wsi/effak/blob/main/README.md" class="doc-card" target="_blank">
+                    <h3>📖 README</h3>
+                    <p>Comprehensive project documentation</p>
+                </a>
+                <a href="https://github.com/aei-wsi/effak/blob/main/BUILD-SUMMARY.md" class="doc-card" target="_blank">
+                    <h3>🏗️ Build Summary</h3>
+                    <p>Overview of what's been built</p>
+                </a>
+                <a href="https://github.com/aei-wsi/effak/blob/main/NEXT-STEPS.md" class="doc-card" target="_blank">
+                    <h3>📋 Next Steps</h3>
+                    <p>Implementation roadmap and future features</p>
+                </a>
+                <a href="https://github.com/aei-wsi/effak/blob/main/PROJECT-STRUCTURE.md" class="doc-card" target="_blank">
+                    <h3>🗂️ Project Structure</h3>
+                    <p>File organization and architecture</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="api" class="api-overview">
+        <div class="container">
+            <h2 class="section-title">API Overview</h2>
+            <div class="api-stats">
+                <div class="stat">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">API Endpoints</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Database Tables</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Main Controllers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Production Ready</div>
+                </div>
+            </div>
+            <div class="api-endpoints">
+                <div class="endpoint-group">
+                    <h3>Authentication (9 endpoints)</h3>
+                    <ul>
+                        <li><span class="method post">POST</span> /api/auth/register</li>
+                        <li><span class="method post">POST</span> /api/auth/login</li>
+                        <li><span class="method get">GET</span> /api/auth/verify-email/:token</li>
+                        <li><span class="method get">GET</span> /api/auth/profile</li>
+                        <li>+ 5 more...</li>
+                    </ul>
+                </div>
+                <div class="endpoint-group">
+                    <h3>Households (8 endpoints)</h3>
+                    <ul>
+                        <li><span class="method get">GET</span> /api/households</li>
+                        <li><span class="method post">POST</span> /api/households</li>
+                        <li><span class="method get">GET</span> /api/households/:id</li>
+                        <li><span class="method put">PUT</span> /api/households/:id</li>
+                        <li>+ 4 more...</li>
+                    </ul>
+                </div>
+                <div class="endpoint-group">
+                    <h3>Emergency Contacts (8 endpoints)</h3>
+                    <ul>
+                        <li><span class="method get">GET</span> /api/households/:id/emergency-contacts</li>
+                        <li><span class="method post">POST</span> /api/households/:id/emergency-contacts</li>
+                        <li><span class="method post">POST</span> .../permissions</li>
+                        <li><span class="method post">POST</span> .../send-access</li>
+                        <li>+ 4 more...</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cta">
+                <a href="api.html" class="btn btn-primary">View Full API Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-start">
+        <div class="container">
+            <h2 class="section-title">Quick Start</h2>
+            <div class="code-block">
+                <pre><code># Clone the repository
+git clone https://github.com/aei-wsi/effak.git
+cd effak/backend
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your settings
+
+# Create database
+psql -U postgres -c "CREATE DATABASE effak;"
+
+# Run migrations
+npm run migrate
+
+# Start server
+npm run dev
+
+# Server running at http://localhost:5000</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>EFFAK</h4>
+                    <p>Emergency Financial First Aid Kit</p>
+                    <p>Secure document management for emergencies</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="api.html">API Reference</a></li>
+                        <li><a href="https://github.com/aei-wsi/effak" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://github.com/aei-wsi/effak/blob/main/README.md" target="_blank">README</a></li>
+                        <li><a href="https://github.com/aei-wsi/effak/blob/main/BUILD-SUMMARY.md" target="_blank">Build Summary</a></li>
+                        <li><a href="https://github.com/aei-wsi/effak/blob/main/NEXT-STEPS.md" target="_blank">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        <li>Node.js & Express</li>
+                        <li>PostgreSQL</li>
+                        <li>JWT Auth</li>
+                        <li>RESTful API</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EFFAK. Open Source Project.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

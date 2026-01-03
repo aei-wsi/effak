@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - EFFAK</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🚨 EFFAK</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Get Started</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="https://github.com/aei-wsi/effak" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 60px 0;">
+        <div class="container">
+            <h1 class="hero-title">API Documentation</h1>
+            <p class="hero-subtitle">Complete REST API reference for EFFAK</p>
+        </div>
+    </section>
+
+    <section style="padding: 40px 0;">
+        <div class="container">
+            <h2>Base URL</h2>
+            <div class="code-block">
+                <pre><code>http://localhost:5000/api</code></pre>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Authentication</h2>
+            <p>Most endpoints require a valid JWT token. Include it in the Authorization header:</p>
+            <div class="code-block">
+                <pre><code>Authorization: Bearer &lt;your_token_here&gt;</code></pre>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Authentication Endpoints</h2>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method post">POST</span> /api/auth/register</h3>
+                <p><strong>Description:</strong> Register a new user</p>
+                <p><strong>Access:</strong> Public</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "email": "user@example.com",
+  "password": "securepassword123",
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": "+1234567890"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method post">POST</span> /api/auth/login</h3>
+                <p><strong>Description:</strong> Login user</p>
+                <p><strong>Access:</strong> Public</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "email": "user@example.com",
+  "password": "securepassword123"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method get">GET</span> /api/auth/profile</h3>
+                <p><strong>Description:</strong> Get current user profile</p>
+                <p><strong>Access:</strong> Private (requires token)</p>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method put">PUT</span> /api/auth/profile</h3>
+                <p><strong>Description:</strong> Update user profile</p>
+                <p><strong>Access:</strong> Private (requires token)</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "phone": "+1987654321"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method post">POST</span> /api/auth/change-password</h3>
+                <p><strong>Description:</strong> Change password</p>
+                <p><strong>Access:</strong> Private (requires token)</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "currentPassword": "oldpassword",
+  "newPassword": "newpassword123"
+}</code></pre>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Household Endpoints</h2>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method get">GET</span> /api/households</h3>
+                <p><strong>Description:</strong> Get all households for current user</p>
+                <p><strong>Access:</strong> Private (requires token)</p>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method post">POST</span> /api/households</h3>
+                <p><strong>Description:</strong> Create new household</p>
+                <p><strong>Access:</strong> Private (requires token)</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "name": "Smith Family"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method get">GET</span> /api/households/:householdId</h3>
+                <p><strong>Description:</strong> Get household by ID</p>
+                <p><strong>Access:</strong> Private (requires token)</p>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method post">POST</span> /api/households/:householdId/members</h3>
+                <p><strong>Description:</strong> Add member to household</p>
+                <p><strong>Access:</strong> Private (Admin only)</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "email": "member@example.com",
+  "role": "member",
+  "relationship": "spouse"
+}</code></pre>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Emergency Contact Endpoints</h2>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method get">GET</span> /api/households/:householdId/emergency-contacts</h3>
+                <p><strong>Description:</strong> Get all emergency contacts for household</p>
+                <p><strong>Access:</strong> Private (requires token)</p>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method post">POST</span> /api/households/:householdId/emergency-contacts</h3>
+                <p><strong>Description:</strong> Create emergency contact</p>
+                <p><strong>Access:</strong> Private (Admin only)</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "email": "jane@example.com",
+  "phone": "+1234567890",
+  "relationship": "sister",
+  "isPrimary": false,
+  "notes": "Call in case of emergency"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method post">POST</span> /api/households/:householdId/emergency-contacts/:contactId/permissions</h3>
+                <p><strong>Description:</strong> Grant permission to emergency contact</p>
+                <p><strong>Access:</strong> Private (Admin only)</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "categoryId": 1,
+  "canView": true,
+  "canDownload": false,
+  "expiresInHours": 72
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="endpoint-group" style="margin: 2rem 0;">
+                <h3><span class="method post">POST</span> /api/households/:householdId/emergency-contacts/:contactId/send-access</h3>
+                <p><strong>Description:</strong> Send emergency access link</p>
+                <p><strong>Access:</strong> Private (Admin only)</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>{
+  "method": "email"  // or "sms"
+}</code></pre>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Error Responses</h2>
+            <p>All errors follow this format:</p>
+            <div class="code-block" style="margin-top: 1rem;">
+                <pre><code>{
+  "success": false,
+  "message": "Error description",
+  "errors": []  // Optional validation errors
+}</code></pre>
+            </div>
+
+            <h3 style="margin-top: 2rem;">HTTP Status Codes</h3>
+            <ul style="margin-top: 1rem; line-height: 2;">
+                <li><strong>200</strong> - Success</li>
+                <li><strong>201</strong> - Created</li>
+                <li><strong>400</strong> - Bad Request</li>
+                <li><strong>401</strong> - Unauthorized</li>
+                <li><strong>403</strong> - Forbidden</li>
+                <li><strong>404</strong> - Not Found</li>
+                <li><strong>429</strong> - Too Many Requests</li>
+                <li><strong>500</strong> - Internal Server Error</li>
+            </ul>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://github.com/aei-wsi/effak/blob/main/README.md" class="btn btn-primary" target="_blank">View Full Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 EFFAK. Open Source Project.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

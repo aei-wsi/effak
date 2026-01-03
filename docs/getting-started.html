@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - EFFAK</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🚨 EFFAK</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Get Started</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="https://github.com/aei-wsi/effak" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 60px 0;">
+        <div class="container">
+            <h1 class="hero-title">Getting Started</h1>
+            <p class="hero-subtitle">Quick setup guide for EFFAK</p>
+        </div>
+    </section>
+
+    <section style="padding: 40px 0;">
+        <div class="container">
+            <h2>Prerequisites</h2>
+            <ul style="line-height: 2; margin-top: 1rem;">
+                <li>Node.js >= 18.0.0</li>
+                <li>PostgreSQL >= 12</li>
+                <li>npm >= 9.0.0</li>
+            </ul>
+
+            <h2 style="margin-top: 3rem;">Installation Steps</h2>
+
+            <div style="margin-top: 2rem;">
+                <h3>1. Clone the Repository</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>git clone https://github.com/aei-wsi/effak.git
+cd effak</code></pre>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>2. Install Dependencies</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>cd backend
+npm install</code></pre>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>3. Set Up Environment Variables</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>cp .env.example .env</code></pre>
+                </div>
+                <p style="margin-top: 1rem;">Edit <code>.env</code> with your configuration:</p>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code># Server
+NODE_ENV=development
+PORT=5000
+
+# Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=effak
+DB_USER=postgres
+DB_PASSWORD=your_password
+
+# JWT
+JWT_SECRET=your_secret_key_here
+JWT_EXPIRE=30d
+
+# Email (SMTP)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASSWORD=your_app_password
+
+# Twilio (optional, for SMS)
+TWILIO_ACCOUNT_SID=your_sid
+TWILIO_AUTH_TOKEN=your_token
+TWILIO_PHONE_NUMBER=+1234567890</code></pre>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>4. Create PostgreSQL Database</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>psql -U postgres
+CREATE DATABASE effak;
+\q</code></pre>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>5. Run Database Migrations</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>npm run migrate</code></pre>
+                </div>
+                <p style="margin-top: 1rem;">This will create all 12 tables with proper indexes and relationships.</p>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>6. Start the Server</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code># Development mode (with auto-reload)
+npm run dev
+
+# Production mode
+npm start</code></pre>
+                </div>
+                <p style="margin-top: 1rem;">The server will start on <code>http://localhost:5000</code></p>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Verify Installation</h2>
+            <p style="margin-top: 1rem;">Test the health endpoint:</p>
+            <div class="code-block" style="margin-top: 1rem;">
+                <pre><code>curl http://localhost:5000/health</code></pre>
+            </div>
+            <p style="margin-top: 1rem;">Expected response:</p>
+            <div class="code-block" style="margin-top: 1rem;">
+                <pre><code>{
+  "status": "healthy",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "uptime": 3600,
+  "environment": "development",
+  "database": "connected"
+}</code></pre>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Test API Endpoints</h2>
+
+            <div style="margin-top: 2rem;">
+                <h3>Register a New User</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>curl -X POST http://localhost:5000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "password": "password123",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "+1234567890"
+  }'</code></pre>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>Login</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "password": "password123"
+  }'</code></pre>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>Get Profile (with JWT token)</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code>curl http://localhost:5000/api/auth/profile \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"</code></pre>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Available Scripts</h2>
+            <div class="code-block" style="margin-top: 1rem;">
+                <pre><code>npm start          # Start production server
+npm run dev        # Start development server with nodemon
+npm run migrate    # Run database migrations
+npm test           # Run tests
+npm run lint       # Run ESLint</code></pre>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Project Structure</h2>
+            <div class="code-block" style="margin-top: 1rem;">
+                <pre><code>backend/
+├── src/
+│   ├── config/
+│   │   └── database.js          # PostgreSQL configuration
+│   ├── controllers/
+│   │   ├── authController.js    # Authentication logic
+│   │   ├── householdController.js
+│   │   └── emergencyContactController.js
+│   ├── middleware/
+│   │   └── auth.js              # JWT verification
+│   ├── routes/
+│   │   └── api.js               # API route definitions
+│   ├── utils/
+│   │   ├── email.js             # Email and SMS utilities
+│   │   └── logger.js            # Winston logger
+│   ├── database/
+│   │   └── migrate.js           # Database migrations
+│   └── server.js                # Express server
+├── logs/                        # Application logs
+├── uploads/                     # Uploaded files
+├── package.json
+└── .env.example</code></pre>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Troubleshooting</h2>
+
+            <div style="margin-top: 2rem;">
+                <h3>Database Connection Issues</h3>
+                <ul style="line-height: 2; margin-top: 1rem;">
+                    <li>Verify PostgreSQL is running: <code>pg_isready</code></li>
+                    <li>Check database credentials in <code>.env</code></li>
+                    <li>Ensure database exists: <code>psql -U postgres -l</code></li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>Email Not Sending</h3>
+                <ul style="line-height: 2; margin-top: 1rem;">
+                    <li>Verify SMTP credentials</li>
+                    <li>For Gmail, use an app-specific password</li>
+                    <li>Check firewall settings for SMTP ports</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>Port Already in Use</h3>
+                <div class="code-block" style="margin-top: 1rem;">
+                    <pre><code># Find process using port 5000
+lsof -i :5000
+
+# Kill the process
+kill -9 &lt;PID&gt;</code></pre>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Next Steps</h2>
+            <ul style="line-height: 2; margin-top: 1rem;">
+                <li>Read the <a href="api.html">API Documentation</a></li>
+                <li>Explore the <a href="https://github.com/aei-wsi/effak/blob/main/README.md" target="_blank">Full README</a></li>
+                <li>Check the <a href="https://github.com/aei-wsi/effak/blob/main/NEXT-STEPS.md" target="_blank">Implementation Roadmap</a></li>
+                <li>Build a frontend (React, Vue, or Angular)</li>
+                <li>Add document upload functionality</li>
+                <li>Deploy to production</li>
+            </ul>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="api.html" class="btn btn-primary">View API Documentation</a>
+                <a href="https://github.com/aei-wsi/effak" class="btn btn-secondary" target="_blank">GitHub Repository</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 EFFAK. Open Source Project.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
